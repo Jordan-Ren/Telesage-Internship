@@ -1,0 +1,174 @@
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+ITEMS OUTPUTING BASED ON OTHER ITEMS
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+***LIST OUT THESE ITEMS IF 2***
+"PreFormula": "
+var items = [$yadq001a,$yadq004a,$yadq005a,$yadq008a,$yadq009a,$yadq012a, $yadqnote01, $yadqnote02, $yadqnote03];
+var outputs = ['had trouble keeping your mind on what you are doing, ', 'often been easily distracted, ', 'had trouble being organized, ', 'often lost things, ', 'often forgotten what you are suppose to be doing, ', 'had problems not listening to people, ', 'got out of tasks that requried you to pay attention for a long time, ', 'had trouble finishing work or other things, ', 'have made careless mistakes '];
+var output_str = '';
+for (var i = 0; i < items.length; i++)
+  {
+  if (items[i] == 2)
+    {
+    output_str = output_str + outputs[i];
+    }
+  }
+output_str = output_str + 'for six months or longer';
+",
+
+***PRONOUNS***
+"PreFormula": "
+var response = $yitqnote03;
+var pronoun = '';
+var livelives = '';
+if (response == 1 || response == 3) {
+  pronoun = 'he';
+  livelives = 'lives';
+}
+if (response == 2 || response == 4) {
+  pronoun = 'she';
+  livelives = 'lives';
+}
+if (response == 5 || response == 6) {
+  pronoun = 'they';
+  livelives = 'live';
+}
+",
+%%Output.Content(pronoun);%% %%Output.Content(livelives);%%
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+TIME AND MONTHS ARE HERE
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+
+***WHICH MONTH IS IT***
+"PreFormula": "
+var date = Helpers.GetDate();
+var month = date.split('/')[0];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+for (var i = 0; i <= months.length; i++) {
+  if (parseInt(month) == i + 1) {
+    var currentMonth = months[i];
+  }
+}
+",
+***___ MONTHS AGO***
+"PreFormula": "
+var month = Helpers.GetDate().split('/')[0];
+var diff = parseInt(month) - 6;
+if (diff <= 0) {
+  var final_month = 12 - diff;
+} else {
+  var final_month = diff;
+}
+var output_str = '';
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+for (var i = 0; i <= months.length; i++) {
+  if (final_month == i) {
+    output_str == months[i];
+  }
+}
+",
+
+***BEGINING MIDDLE END OF MONTH***
+"PreFormula": "
+var date = Helpers.GetDate();
+var day = parseInt(date[1]);
+if (day >= 1 && day <= 10) {
+  var output_str = 'begining';
+}
+if (day >= 11 && day <= 20) {
+  var output_str = 'middle';
+}
+if (day >= 21 && day <= 31) {
+  var output_str = 'end';
+}
+",
+
+***GETS THE CURRENT SEASON LOL***
+"PreFormula": "
+var date = Helpers.GetDate();
+var month = date.split('/')[0];
+var season = '';
+if (parseInt(month) <= 5 && parseInt(month) >=3)
+  {
+  season = 'Spring';
+  }
+if (parseInt(month) <= 8 && parseInt(month) >=6)
+  {
+  season = 'Summer';
+  }
+if (parseInt(month) <= 11 && parseInt(month) >=9)
+  {
+  season = 'Fall';
+  }
+if (parseInt(month) == 12 || parseInt(month) == 1 || parseInt(month) == 2)
+  {
+  season = 'Winter';
+  }
+",
+
+***WHICH PART OF THE MONTH***
+var date = Helpers.GetDate();
+var date_block = date.split('/');
+var day = parseInt(date_block[1]);
+output_str = 'aksjdfh';
+if (day >= 1 && day <= 10) {
+  output_str = 'begining';
+}
+if (day >= 11 && day <= 20) {
+  output_str = 'middle';
+}
+if (day >= 21 && day <= 31) {
+  output_str = 'end';
+}
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+RECALLING FROM INTRO/MONTH
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+***YEAR AGO EVENT***
+"PreFormula": "
+var date = Helpers.GetDate();
+var month = date.split('/')[0];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+for (var i = 0; i <= months.length; i++) {
+  if (parseInt(month) == i + 1) {
+    var output_str = months[i];
+    output_str = output_str + ' last year';
+  }
+}
+",
+
+
+
+
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+WEIRD UNIQUE FORMULAS
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+***FORMATTING QUESTION***
+"PreFormula": "
+var response = $yitnote04_1;
+var output_str = '';
+if (response == -10){}
+else if (response.split('/')[0].length >= 3) {
+  var output_str = 'PLEASE ENTER THE BIRTHDATE IN THE FORMAT MONTH/DAY/YEAR';
+}
+",
+"PostFormula": "
+var response = $yitnote04_1;
+if (response.split('/')[0].length >= 3) {
+  Branching.Set('yitqnote04_1');
+  Branching.Skip();
+}
+",
