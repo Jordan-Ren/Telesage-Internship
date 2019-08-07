@@ -1,0 +1,121 @@
+--------------------------
+YOUNG ADULT ADDITIONS
+--------------------------
+Choice of text to display:
+
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = '';
+  var output1 = '';
+}
+else {
+  var output = '';
+  var output1 = '';
+}
+",
+%%Output.Content(output);%%
+  var output2 = '';
+  var output3 = '';
+________________________________________________
+
+Branching to EOM:
+
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  Branching.Set('EOM');
+}
+else {
+  Branching.Set('');
+}
+________________________________________________
+
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = '';
+  var output1 = '';
+}
+else {
+  var output = '[children/';
+  var output1 = ']';
+}",
+%%Output.Content(output);%%
+%%Output.Content(output1);%%
+________________________________________________
+text box _1
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = ' or year of school';
+}
+else {
+  var output = '';
+}
+",
+________________________________________________
+[CARETAKERS]:
+
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = 'family or friends';
+}
+else {
+  var output = '[CARETAKERS]';
+}
+",
+________________________________________________
+your/work/ing or school:
+
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = '';
+  var output1 = '';
+  var output2 = 'ing or school';
+  var output3 = '';
+}
+else {
+  var output = ' your';
+  var output1 = 'work';
+  var output2 = '';
+  var output = ' because of this';
+}
+",
+________________________________________________
+"PreFormula": "
+var YA = Helpers.GetSessionData('isyoungadult');
+if (YA == 'true') {
+  var output = 'make it hard for you to go to school';
+  var output1 = ' or make it hard for you to go to school or hold a job';
+}
+else {
+  var output = 'cause problems with your grades';
+  var output1 = '';
+}
+",
+
+Start of every module:
+
+{
+  "Name": "ysoq000",
+  "Properties": {
+    "AllowBlankResponse": "False",
+    "Description": "Is Young Adult?",
+    "PageBreak": "True",
+    "PostFormula": "
+    if ($ysoq000 == 2) {
+      Helpers.SetSessionData('isyoungadult', 'true');
+    } else {
+      Helpers.SetSessionData('isyoungadult', 'false');
+    }
+    ",
+    "PageHeader": "Social Phobia (Youth)",
+    "ReadAloud": "Is young adult?",
+    "ResponseOptionsJson": "[{\"ToolTip\":\"No\",\"Label\":\"0\",\"NumericValue\":0},{\"ToolTip\":\"Yes\",\"Label\":\"2\",\"NumericValue\":2}]",
+    "SummaryHeading": "SOP"
+  },
+  "SubEntities": null,
+  "Type": "radio"
+},
