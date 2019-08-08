@@ -2,8 +2,6 @@ import json
 import xlrd
 '''
 TO USE REPLACE MODULE NAME AS WELL AS XLSX FILE PATHS.
-REMOVE COMMENTS IN YML FILE BEFORE RUNNING, ADD BACK IN
-AFTERWORDS.
 
 This script adds descriptions to each item based on
 if it has a description on the excell sheet or not.
