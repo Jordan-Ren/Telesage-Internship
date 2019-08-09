@@ -1,0 +1,43 @@
+﻿@page
+@model MVCTest.Pages.Movies.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.ReleaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movie.ReleaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Genre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Genre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="/Moives/Edit" class="btn btn-danger" role="button">Edit</a> 
+    <a href="/Movies" class="btn btn-info" role="button">Back to Index</a>
+</div>
